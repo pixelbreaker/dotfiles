@@ -1,5 +1,3 @@
-# brew 'node'
-brew 'caskroom/cask/brew-cask'
 cask '1password'
 cask 'alfred'
 cask 'appcleaner'
