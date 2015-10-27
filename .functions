@@ -127,3 +127,13 @@ function tre() {
 function reload() {
 	source ~/.bash_profile;
 }
+
+# `o` with no arguments opens the current directory, otherwise opens the given
+# location
+function videoSchedule() {
+	if [ $# -eq 0 ]; then
+		cat ~/dotfiles/youtube-dl-scheduler/downloads.txt;
+	else
+		echo $@ >> ~/dotfiles/youtube-dl-scheduler/downloads.txt;
+	fi;
+}
