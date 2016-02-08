@@ -137,3 +137,7 @@ function videoSchedule() {
 		echo $@ >> ~/dotfiles/youtube-dl-scheduler/downloads.txt;
 	fi;
 }
+
+function videoDownload() {
+	cd ~/dotfiles/youtube-dl-scheduler && ./download.sh;
+}

@@ -1,6 +1,9 @@
 export NVM_DIR="/Users/gabriel/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+export PATH="$HOME/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
