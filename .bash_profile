@@ -4,6 +4,9 @@ export NVM_DIR="/Users/gabriel/.nvm"
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
 
+# Allow my own modules to be imported into node without a path
+export NODE_PATH="$NODE_PATH:./lib"
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
