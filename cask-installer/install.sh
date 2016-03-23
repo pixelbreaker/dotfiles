@@ -1,7 +1,7 @@
 #!/bin/sh
 
 xcode-select --install
-# ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew install caskroom/cask/brew-cask
 brew tap Homebrew/bundle
