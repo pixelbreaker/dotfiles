@@ -141,3 +141,9 @@ function videoSchedule() {
 function videoDownload() {
 	cd ~/dotfiles/youtube-dl-scheduler && ./download.sh;
 }
+
+# calc totals for job estimate where hours/days are in square brackets on each
+# line
+function quoteTotals() {
+  cat $@ | awk -F'[][]' '{print $2}' | paste -sd+ - | bc
+}

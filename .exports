@@ -1,1 +1,2 @@
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export DJANGO_SETTINGS_MODULE=burp.settings
