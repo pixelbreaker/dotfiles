@@ -147,3 +147,10 @@ function videoDownload() {
 function quoteTotals() {
   cat $@ | awk -F'[][]' '{print $2}' | paste -sd+ - | bc
 }
+
+# create gif from .mov
+function screencast() {
+	ffmpeg -y -i $1 -vf fps=10,palettegen __palette.png
+	ffmpeg -i $1 -i __palette.png -filter_complex "fps=10,paletteuse" $2
+	rm __palette.png
+}
