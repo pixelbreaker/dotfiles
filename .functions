@@ -8,6 +8,14 @@ function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
+# Run NVM use if .nvmrc is present when changing current working directory
+function cd() {
+	builtin cd "$@";
+	if test -s .nvmrc; then
+		nvm use
+	fi
+}
+
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
 	local tmpFile="${@%/}.tar";

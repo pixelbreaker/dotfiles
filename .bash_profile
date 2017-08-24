@@ -7,10 +7,10 @@ export WORKON_HOME=~/Envs
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export NODE_ENV=development
 export PATH="$PATH:$HOME/.yarn/bin"
-export FCM_API_KEY=AIzaSyBsybRB7XhgH_c_C372bjUslA8j-XksRtg
 
 eval "$(rbenv init -)"
-source /usr/local/bin/virtualenvwrapper.sh
+# eval "$(direnv hook bash)"
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # Allow my own modules to be imported into node without a path
 export NODE_PATH="$NODE_PATH:./lib"
