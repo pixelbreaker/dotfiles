@@ -159,6 +159,16 @@ function quoteTotals() {
 # create gif from .mov
 function screencast() {
 	ffmpeg -y -i $1 -vf fps=10,palettegen __palette.png
-	ffmpeg -i $1 -i __palette.png -filter_complex "fps=10,paletteuse" $2
+	ffmpeg -i $1 -i __palette.png -filter_complex "fps=15,paletteuse" $2
 	rm __palette.png
+}
+
+function tada68() {
+	local cwd=${pwd}
+	cd /Volumes/TADA68\ \ /
+	rm *.*
+	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
+	cp -r ~/git/public-checkouts/qmk_firmware/tada68_pixelbreaker.bin /Volumes/TADA68\ \ /
+	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
+	cd $cwd
 }
