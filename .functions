@@ -165,10 +165,13 @@ function screencast() {
 
 function tada68() {
 	local cwd=${pwd}
+	cd ~/git/qmk_firmware/
+	make tada68-pixelbreaker-bin
 	cd /Volumes/TADA68\ \ /
-	rm *.*
+	rm -d *.*
 	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
-	cp -r ~/git/public-checkouts/qmk_firmware/tada68_pixelbreaker.bin /Volumes/TADA68\ \ /
+	cp -r ~/git/qmk_firmware/tada68_pixelbreaker.bin /Volumes/TADA68\ \ /
 	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
+	echo "Flashed TADA68 successfully!"
 	cd $cwd
 }
