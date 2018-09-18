@@ -3,11 +3,6 @@ function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
-# Change working directory to the top-most Finder window location
-function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
-}
-
 # Run NVM use if .nvmrc is present when changing current working directory
 function cd() {
 	builtin cd "$@";
@@ -133,21 +128,7 @@ function tre() {
 
 # reload .bash_profile after changes
 function reload() {
-	source ~/.bash_profile;
-}
-
-# `o` with no arguments opens the current directory, otherwise opens the given
-# location
-function videoSchedule() {
-	if [ $# -eq 0 ]; then
-		cat ~/dotfiles/youtube-dl-scheduler/downloads.txt;
-	else
-		echo $@ >> ~/dotfiles/youtube-dl-scheduler/downloads.txt;
-	fi;
-}
-
-function videoDownload() {
-	cd ~/dotfiles/youtube-dl-scheduler && ./download.sh;
+	source ~/.bashrc;
 }
 
 # calc totals for job estimate where hours/days are in square brackets on each
@@ -166,11 +147,11 @@ function screencast() {
 function tada68() {
 	local cwd=${pwd}
 	cd ~/git/qmk_firmware/
-	make tada68-pixelbreaker-bin
-	cd /Volumes/TADA68\ \ /
+	make tada68:pixelbreaker:bin
+	cd /media/gabriel/TADA68
 	rm -d *.*
 	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
-	cp -r ~/git/qmk_firmware/tada68_pixelbreaker.bin /Volumes/TADA68\ \ /
+	cp -r ~/git/qmk_firmware/.build/tada68_pixelbreaker.bin /Volumes/TADA68/FLASH.bin
 	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
 	echo "Flashed TADA68 successfully!"
 	cd $cwd
