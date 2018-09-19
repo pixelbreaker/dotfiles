@@ -92,9 +92,9 @@ function unidecode() {
 # opens the given location
 function a() {
 	if [ $# -eq 0 ]; then
-		atom .;
+		NODE_ENV=production atom .;
 	else
-		atom "$@";
+		NODE_ENV=production atom "$@";
 	fi;
 }
 
@@ -112,9 +112,9 @@ function v() {
 # location
 function o() {
 	if [ $# -eq 0 ]; then
-		open .;
+		gnome-open . >/dev/null 2>/dev/null;
 	else
-		open "$@";
+		gnome-open "$@" >/dev/null 2>/dev/null;
 	fi;
 }
 
