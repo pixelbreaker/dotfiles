@@ -3,7 +3,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NODE_ENV=development
 
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -13,9 +12,12 @@ done;
 unset file;
 
 # some more ls aliases
+alias ls='ls --color=always'
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -F'
+
+alias atom='NODE_ENV=production atom'
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
@@ -72,3 +74,6 @@ fi;
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+# Set up direnv
+eval "$(direnv hook bash)"

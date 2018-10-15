@@ -144,15 +144,11 @@ function screencast() {
 	rm __palette.png
 }
 
-function tada68() {
-	local cwd=${pwd}
-	cd ~/git/qmk_firmware/
-	make tada68:pixelbreaker:bin
-	cd /media/gabriel/TADA68
-	rm -d *.*
-	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
-	cp -r ~/git/qmk_firmware/.build/tada68_pixelbreaker.bin /Volumes/TADA68/FLASH.bin
-	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
-	echo "Flashed TADA68 successfully!"
-	cd $cwd
+# note taking
+note-add() {
+	echo $1 >> ~/notes.txt
+}
+
+note-find() {
+	cat ~/notes.txt | grep $1
 }
