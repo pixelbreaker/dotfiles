@@ -1,6 +1,3 @@
-export NVM_DIR="/Users/gabriel/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH"
 export WORKON_HOME=~/Envs
@@ -8,7 +5,7 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export NODE_ENV=development
 export PATH="$PATH:$HOME/.yarn/bin"
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 # eval "$(direnv hook bash)"
 # source /usr/local/bin/virtualenvwrapper.sh
 
@@ -63,12 +60,15 @@ complete -W "NSGlobalDomain" defaults;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
-# Setting PATH for Python 3.5
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Setting PATH for Python 3.6
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
+_direnv_hook() {
+  local previous_exit_status=$?;
+  eval "$("/usr/local/bin/direnv" export bash)";
+  return $previous_exit_status;
+};
+if ! [[ "$PROMPT_COMMAND" =~ _direnv_hook ]]; then
+  PROMPT_COMMAND="_direnv_hook;$PROMPT_COMMAND"
+fi
