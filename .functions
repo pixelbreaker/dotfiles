@@ -14,6 +14,9 @@ function cd() {
 	if test -s .nvmrc; then
 		nvm use
 	fi
+	if test -s .yvmrc; then
+		yvm use
+	fi
 }
 
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
@@ -42,6 +45,11 @@ function targz() {
 	"${cmd}" -v "${tmpFile}" || return 1;
 	[ -f "${tmpFile}" ] && rm "${tmpFile}";
 	echo "${tmpFile}.gz created successfully.";
+}
+
+# Deletes files for pattern in all subdirs
+function rmFiles() {
+	find . -type f -name "$@" -delete
 }
 
 # Determine size of a file or total size of a directory
@@ -93,16 +101,6 @@ function unidecode() {
 	fi;
 }
 
-# `a` with no arguments opens the current directory in Atom Editor, otherwise
-# opens the given location
-function a() {
-	if [ $# -eq 0 ]; then
-		atom .;
-	else
-		atom "$@";
-	fi;
-}
-
 # `c` with no arguments opens the current directory in VSCode Editor, otherwise
 # opens the given location
 function c() {
@@ -148,17 +146,17 @@ function reload() {
 
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
-function videoSchedule() {
-	if [ $# -eq 0 ]; then
-		cat ~/dotfiles/youtube-dl-scheduler/downloads.txt;
-	else
-		echo $@ >> ~/dotfiles/youtube-dl-scheduler/downloads.txt;
-	fi;
-}
+# function videoSchedule() {
+# 	if [ $# -eq 0 ]; then
+# 		cat ~/dotfiles/youtube-dl-scheduler/downloads.txt;
+# 	else
+# 		echo $@ >> ~/dotfiles/youtube-dl-scheduler/downloads.txt;
+# 	fi;
+# }
 
-function videoDownload() {
-	cd ~/dotfiles/youtube-dl-scheduler && ./download.sh;
-}
+# function videoDownload() {
+# 	cd ~/dotfiles/youtube-dl-scheduler && ./download.sh;
+# }
 
 # calc totals for job estimate where hours/days are in square brackets on each
 # line

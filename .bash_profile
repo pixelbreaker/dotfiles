@@ -72,3 +72,5 @@ _direnv_hook() {
 if ! [[ "$PROMPT_COMMAND" =~ _direnv_hook ]]; then
   PROMPT_COMMAND="_direnv_hook;$PROMPT_COMMAND"
 fi
+export YVM_DIR=/usr/local/opt/yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
