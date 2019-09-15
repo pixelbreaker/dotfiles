@@ -141,22 +141,8 @@ function tre() {
 
 # reload .bash_profile after changes
 function reload() {
-	source ~/.bash_profile;
+	source ~/.zshrc;
 }
-
-# `o` with no arguments opens the current directory, otherwise opens the given
-# location
-# function videoSchedule() {
-# 	if [ $# -eq 0 ]; then
-# 		cat ~/dotfiles/youtube-dl-scheduler/downloads.txt;
-# 	else
-# 		echo $@ >> ~/dotfiles/youtube-dl-scheduler/downloads.txt;
-# 	fi;
-# }
-
-# function videoDownload() {
-# 	cd ~/dotfiles/youtube-dl-scheduler && ./download.sh;
-# }
 
 # calc totals for job estimate where hours/days are in square brackets on each
 # line
@@ -169,17 +155,4 @@ function screencast() {
 	ffmpeg -y -i $1 -vf fps=10,palettegen __palette.png
 	ffmpeg -i $1 -i __palette.png -filter_complex "fps=15,paletteuse" $2
 	rm __palette.png
-}
-
-function tada68() {
-	local cwd=${pwd}
-	cd ~/git/qmk_firmware/
-	make tada68-pixelbreaker-bin
-	cd /Volumes/TADA68\ \ /
-	rm -d *.*
-	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
-	cp -r ~/git/qmk_firmware/tada68_pixelbreaker.bin /Volumes/TADA68\ \ /
-	rm -rf .Trashes/ .fseventsd/ ._.Trashes ._FLASH.bin
-	echo "Flashed TADA68 successfully!"
-	cd $cwd
 }

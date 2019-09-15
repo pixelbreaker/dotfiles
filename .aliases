@@ -1,0 +1,2 @@
+alias ll='ls -GFlash'
+alias ls='ls -GFash'
