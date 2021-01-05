@@ -8,6 +8,11 @@ function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
+# Get latest git commits for daily changelog
+function changelog() {
+	git log --pretty=format:"- %s"
+}
+
 # Run NVM use if .nvmrc is present when changing current working directory
 function cd() {
 	builtin cd "$@";
@@ -18,7 +23,7 @@ function cd() {
 		yvm use
 	fi
 }
-
+  
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
 	local tmpFile="${@%/}.tar";
@@ -139,7 +144,7 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-# reload .bash_profile after changes
+# reload .zshrc after changes
 function reload() {
 	source ~/.zshrc;
 }

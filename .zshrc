@@ -70,9 +70,9 @@ ZSH_THEME="bullet-train"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-
 BULLETTRAIN_CONTEXT_DEFAULT_USER=gabes
+
+source $ZSH/oh-my-zsh.sh
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -88,3 +88,14 @@ export NVM_DIR="$HOME/.nvm"
 
 export YVM_DIR=/Users/gabes/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+# run cd in pwd to ensure nvm/yvm are triggered in integrated terminals in vscode
+cd .
+
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin/:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# python stuff
+eval "$(pyenv init -)"
+export WORKON_HOME=~/.virtualenvs
+export BROWSER=vivaldi
+# source /usr/local/bin/virtualenvwrapper.sh
