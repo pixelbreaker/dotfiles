@@ -161,3 +161,18 @@ function screencast() {
 	ffmpeg -i $1 -i __palette.png -filter_complex "fps=15,paletteuse" $2
 	rm __palette.png
 }
+
+# recent git branches
+function gitlb() {
+	git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+}
+
+function qmkflash() {
+	if [[ $1 == charybdis ]]; then
+		cd ~/git/keyboards/bastardkb-qmk
+	else 
+		cd ~/git/keyboards/qmk_firmware
+	fi;
+
+	qmk flash -j 0 ./users/pixelbreaker/keymaps/$1.json
+}

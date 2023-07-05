@@ -82,6 +82,7 @@ for file in ~/dotfiles/.{path,exports,aliases,functions,extra}; do
 done;
 unset file;
 
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -93,9 +94,36 @@ export YVM_DIR=/Users/gabes/.yvm
 cd .
 
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin/:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export YVMIR="$HOME/.yvm"
 
 # python stuff
 eval "$(pyenv init -)"
+VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/versions/3.9.1/bin/python
 export WORKON_HOME=~/.virtualenvs
 export BROWSER=vivaldi
-# source /usr/local/bin/virtualenvwrapper.sh
+# Disable interactive shell in docker to stop "input not a TTY" error
+# export COMPOSE_INTERACTIVE_NO_CLI=1
+# pyenv virtualenvwrapper
+# source /usr/local/bin/virtualenvwrappyenv virtualenvwrapperper.sh
+
+
+[ -r $YVM_DIR/yvm.sh ] && source $YVM_DIR/yvm.sh
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/gabes/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/gabes/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/gabes/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/gabes/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# pnpm
+export PNPM_HOME="/Users/gabes/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
